@@ -1,7 +1,7 @@
 <template>
-  <img alt="Vue logo" src="@/assets/images/logo.png" />
+  <img src="@/assets/images/logo.png" alt="Vue logo">
   <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
-  <div>x: {{x}} - y: {{y}}</div>
+  <div>x: {{ x }} - y: {{ y }}</div>
   <div>name: {{ getAppid.name }}</div>
 </template>
 

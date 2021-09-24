@@ -24,7 +24,7 @@ export const numberParse = (str) => {
 /**
  * @returns {String} 商品金钱处理
  */
- export const cashArr = (cash = '') => {
+export const cashArr = (cash = '') => {
   if (!cash) { return ['-', '--'] }
   const cashAr = parseFloat(cash).toFixed(2).split('.')
   cashAr[0] = cashAr[0] + '.'
@@ -40,7 +40,7 @@ export const formatMoney = (money = '0.00', digit = 2) => {
   tpMoney = Number(tpMoney)
   if (isNaN(tpMoney)) { return '0.00' }
   tpMoney = tpMoney.toFixed(digit) + ''
-  var re = /^(-?\d+)(\d{3})(\.?\d*)/
+  const re = /^(-?\d+)(\d{3})(\.?\d*)/
   while (re.test(tpMoney)) {
     tpMoney = tpMoney.replace(re, '$1,$2$3')
   }
@@ -64,11 +64,11 @@ export const bindCardNo = value => {
  */
 export const capital = (str = '') => {
   str = str + ''
-  var len = str.length - 1
-  var idxs = ['', '十', '百', '千', '万', '十', '百', '千', '亿', '十', '百', '千', '万', '十', '百', '千', '亿']
-  var num = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九']
-  return str.replace(/([1-9]|0+)/g, function($, $1, idx, full) {
-    var pos = 0
+  const len = str.length - 1
+  const idxs = ['', '十', '百', '千', '万', '十', '百', '千', '亿', '十', '百', '千', '万', '十', '百', '千', '亿']
+  const num = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九']
+  return str.replace(/([1-9]|0+)/g, function($, $1, idx) {
+    let pos = 0
     if ($1[0] !== '0') {
       pos = len - idx
       if (idx === 0 && $1[0] === 1 && idxs[len - idx] === '十') {
@@ -76,8 +76,8 @@ export const capital = (str = '') => {
       }
       return num[$1[0]] + idxs[len - idx]
     } else {
-      var left = len - idx
-      var right = len - idx + $1.length
+      const left = len - idx
+      const right = len - idx + $1.length
       if (Math.floor(right / 4) - Math.floor(left / 4) > 0) {
         pos = left - left % 4
       }
@@ -96,7 +96,7 @@ export const capital = (str = '') => {
  * @returns {String} 手机号中间四位隐藏
  */
 export const handlePhone = (val) => {
-  var phone = val.substr(0, 3) + '****' + val.substr(7)
+  const phone = val.substr(0, 3) + '****' + val.substr(7)
   return phone
 }
 
@@ -104,14 +104,14 @@ export const handlePhone = (val) => {
  * @returns {String} 获取当前时间
  */
 export const getDateTime = () => {
-  var dt = new Date()
-  var year = dt.getFullYear()
-  var month = dt.getMonth() + 1
-  var day = dt.getDate()
-  var h = dt.getHours()
-  var m = dt.getMinutes()
-  var s = dt.getSeconds()
-  var currentdate = year + '/' + month + '/' + day + ' ' + h + '/' + m + '/' + s
+  const dt = new Date()
+  const year = dt.getFullYear()
+  const month = dt.getMonth() + 1
+  const day = dt.getDate()
+  const h = dt.getHours()
+  const m = dt.getMinutes()
+  const s = dt.getSeconds()
+  const currentdate = year + '/' + month + '/' + day + ' ' + h + '/' + m + '/' + s
   return currentdate
 }
 
@@ -134,7 +134,7 @@ export const getParams = url => {
  * @returns {Boolean} 验证是否为手机号码
  */
 export const isMobile = (v = '') => {
-  var r = /^1[3456789]\d{9}$/
+  const r = /^1[3456789]\d{9}$/
   return !v ? false : r.test(v)
 }
 
@@ -142,7 +142,7 @@ export const isMobile = (v = '') => {
  * @returns {Boolean} 验证身份证的有效性
  */
 export const isCardID = (v = '') => {
-  var r = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/
+  const r = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/
   return !v ? false : r.test(v)
 }
 
@@ -150,7 +150,7 @@ export const isCardID = (v = '') => {
  * @returns {Boolean} 验证邮箱格式
  */
 export const isEmail = (v = '') => {
-  var r = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/
+  const r = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/
   return !v ? false : r.test(v)
 }
 
@@ -158,7 +158,7 @@ export const isEmail = (v = '') => {
  * @returns {Boolean} 验证是否为汉字
  */
 export const idChinese = (v = '') => {
-  var r = /^\s*$/g
+  const r = /^\s*$/g
   return !v ? false : r.test(v)
 }
 
@@ -166,7 +166,7 @@ export const idChinese = (v = '') => {
  * @returns {Boolean} 验证是否为车牌号
  */
 export const isPlateNumber = (v = '') => {
-  var r = /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[A-Z0-9]{4}[A-Z0-9挂学警港澳]{1}$/
+  const r = /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[A-Z0-9]{4}[A-Z0-9挂学警港澳]{1}$/
   return !v ? false : r.test(v)
 }
 

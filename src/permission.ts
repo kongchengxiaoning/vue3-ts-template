@@ -6,13 +6,13 @@ import 'nprogress/nprogress.css'
 import { getToken } from '@/utils/auth'
 
 // NProgress Configuration
-NProgress.configure({ 
+NProgress.configure({
   showSpinner: false
 })
 
 const { TITLE } = config
 
-router.beforeEach(async(to, from, next: Function) => {
+router.beforeEach(async(to, from, next) => {
   // 开始进度条
   NProgress.start()
   // 获取Token

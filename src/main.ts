@@ -12,7 +12,7 @@ import svgIcon from '@/assets/icons/index'
 /**
  * @description 自定义指令
  */
-import directives from "./directives"
+import directives from './directives'
 
 /**
  * @description 初始化样式

@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <svg-icon class="iconfont" icon-class="404"></svg-icon>
+    <svg-icon class="iconfont" icon-class="404" />
   </div>
 </template>
 
