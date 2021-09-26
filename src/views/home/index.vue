@@ -2,7 +2,7 @@
   <img src="@/assets/images/logo.png" alt="Vue logo">
   <HelloWorld msg="Hello Vue 3 + TypeScript + Vite" />
   <div>x: {{ x }} - y: {{ y }}</div>
-  <div>name: {{ getAppid.name }}</div>
+  <div>name: {{ getUserInfo.name }}</div>
 </template>
 
 <script setup lang="ts">
@@ -15,12 +15,12 @@ import { useStore } from 'vuex'
 
 const store = useStore()
 
-store.commit('user/SET_USER_INFO', {
-  name: 'XIAOMING',
-  age: 18
-})
+const getUserInfo = computed(() => store.getters.userInfo || {})
 
-const getAppid = computed(() => store.getters.userInfo || {})
+const getLogin = async() => {
+  await store.dispatch('user/login', { userName: 'admin', password: '123456' })
+}
+getLogin()
 
 const { x, y } = useMousePosition()
 </script>

@@ -29,13 +29,13 @@ router.beforeEach(async(to, from, next) => {
       } else {
         try {
           // 获取用户信息
-          // const { roles } = await store.dispatch('user/getInfo')
+          await store.dispatch('user/getInfo')
 
-          // // 基于角色生成路由
+          // 基于角色生成路由
           // const accessRoutes = await store.dispatch('permission/generateRoutes', roles)
 
           // 动态添加可访问路由
-          // router.addRoute(...accessRoutes)
+          // router.addRoute()
 
           next({ ...to, replace: true })
         } catch (error) {

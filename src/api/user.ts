@@ -7,7 +7,7 @@ import request from '@/utils/request'
  */
 export const setLogin = data => {
   return request({
-    url: '/login/login',
+    url: '/mock/login',
     method: 'POST',
     data
   })
@@ -18,7 +18,7 @@ export const setLogin = data => {
  */
 export const getUserInfo = data => {
   return request({
-    url: '/login/user_info',
+    url: '/mock/user_info',
     method: 'POST',
     data
   })
@@ -29,7 +29,7 @@ export const getUserInfo = data => {
  */
 export const setLogout = () => {
   return request({
-    url: '/login/logout',
+    url: '/mock/logout',
     method: 'POST'
   })
 }

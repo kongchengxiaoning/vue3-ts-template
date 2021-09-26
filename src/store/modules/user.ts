@@ -17,8 +17,8 @@ const mutations = {
 }
 
 const actions = {
-  login({ commit }, userInfo) {
-    const { userName, password } = userInfo
+  login({ commit }, account) {
+    const { userName, password } = account
     return new Promise((resolve: any, reject: any) => {
       setLogin({ userName, password }).then(res => {
         const { data } = res
