@@ -10,8 +10,8 @@ function pathResolve(dir: string) {
 
 // https://vitejs.dev/config/
 export default ({ command }: ConfigEnv): UserConfig => {
-  // 是否开启生产mock
-  const prodMock = false
+  // 是否开启mock
+  const devMock = true
 
   return {
     // 插件
@@ -29,20 +29,16 @@ export default ({ command }: ConfigEnv): UserConfig => {
         ignore: /^\_/,
         mockPath: 'mock',
         watchFiles: true,
-        localEnabled: command === 'serve',
-        prodEnabled: command !== 'serve' && prodMock,
-        injectCode: ``
+        localEnabled: command === 'serve' && devMock
       })
     ],
     // 别名
     resolve: {
       alias: [
-        // @/xxxx => src/xxxx
         {
           find: /@\//,
           replacement: pathResolve('src') + '/'
         },
-        // #/xxxx => types/xxxx
         {
           find: /#\//,
           replacement: pathResolve('types') + '/'
@@ -53,13 +49,8 @@ export default ({ command }: ConfigEnv): UserConfig => {
     server: {
       port: 9527,
       proxy: {
-        '/api/mock': {
-          target: 'http://localhost:9527/', // 对mock进行代理，为了区别非mock的代理
-          changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api/, '')
-        },
         '/api': {
-          target: 'https://abcsv-cs.net/',
+          target: 'http://localhost:9527/',
           changeOrigin: true,
           rewrite: (path) => path.replace(/^\/api/, '')
         }

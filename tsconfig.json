@@ -31,6 +31,10 @@
     "esModuleInterop": true,
     // 编译过程中需要引入的库文件的列表
     "lib": ["esnext", "dom"],
+    // 用来指定默认的类型声明文件查找路径
+    "typeRoots": ["./node_modules/@types/", "./types"],
+    // 设置我们想要引入的types包
+    "types": ["vite/client"],
     // 解析非相对模块名的基准目录
     "baseUrl": ".",
     // 模块名到基于 baseUrl的路径映射的列表
@@ -39,6 +43,19 @@
       "#/*": ["types/*"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
-  "exclude": ["node_modules"]
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts",
+    "src/**/*.tsx",
+    "src/**/*.vue",
+    "types/**/*.d.ts",
+    "types/**/*.ts",
+    "mock/**/*.ts",
+    "vite.config.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.js"
+  ]
 }

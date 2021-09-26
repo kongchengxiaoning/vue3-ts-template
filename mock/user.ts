@@ -27,7 +27,7 @@ const users = {
 
 export default [
   {
-    url: '/mock/login',
+    url: '/api/login',
     method: 'post',
     response: (config) => {
       const { userName } = config.body
@@ -48,7 +48,7 @@ export default [
     }
   },
   {
-    url: '/mock/user_info',
+    url: '/api/user_info',
     method: 'post',
     response: config => {
       const { token } = config.body
@@ -69,7 +69,7 @@ export default [
     }
   },
   {
-    url: '/mock/logout',
+    url: '/api/logout',
     method: 'post',
     response: () => {
       return {
