@@ -15,5 +15,8 @@ declare global {
 
   declare interface ViteEnv {
     VITE_ENV: string;
+    VITE_LEGACY: boolean;
+    VITE_USE_MOCK: boolean;
+    VITE_BUILD_COMPRESS: 'gzip' | 'brotli' | 'none';
   }
 }

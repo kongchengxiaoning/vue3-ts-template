@@ -4,13 +4,15 @@ import vueJsx from '@vitejs/plugin-vue-jsx'
 import legacy from '@vitejs/plugin-legacy'
 import { configSvgIconsPlugin } from './svgSprite'
 import { configMockPlugin } from './mock'
-
-// 是否向下兼容ie11
-const VITE_LEGACY = false
-// 是否开启mock
-const VITE_USE_MOCK = true
+import { configCompressPlugin } from './compress'
 
 export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
+  const {
+    VITE_LEGACY,
+    VITE_USE_MOCK,
+    VITE_BUILD_COMPRESS
+  } = viteEnv
+
   const vitePlugins: (Plugin | Plugin[])[] = [
     vue(),
     vueJsx()
@@ -24,6 +26,14 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
 
   // vite-plugin-mock
   VITE_USE_MOCK && vitePlugins.push(configMockPlugin(isBuild))
+
+  // The following plugins only work in the production environment
+  if (isBuild) {
+    // vite-plugin-compression
+    vitePlugins.push(
+      configCompressPlugin(VITE_BUILD_COMPRESS)
+    )
+  }
 
   return vitePlugins
 }
