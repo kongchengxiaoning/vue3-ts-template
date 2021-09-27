@@ -9,4 +9,3 @@ const ERROR_ROUTES = [
 ]
 
 export default ERROR_ROUTES
-

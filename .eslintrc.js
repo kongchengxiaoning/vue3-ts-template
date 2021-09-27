@@ -5,9 +5,6 @@ module.exports = {
     node: true,
     es6: true
   },
-  globals: {
-    'defineProps': true
-  },
   parser: 'vue-eslint-parser',
   parserOptions: {
     parser: '@typescript-eslint/parser',
@@ -149,7 +146,7 @@ module.exports = {
     'no-this-before-super': 2,
     'no-throw-literal': 2,
     'no-trailing-spaces': 2,
-    'no-undef': 2,
+    'no-undef': 'off', // 手动关闭了全局变量的验证
     'no-undef-init': 2,
     'no-unexpected-multiline': 2,
     'no-unmodified-loop-condition': 2,

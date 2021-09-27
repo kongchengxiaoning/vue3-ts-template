@@ -23,18 +23,25 @@
     "noImplicitThis": false,
     // 严格检查空值
     "strictNullChecks": false,
+    // jsx
     "jsx": "preserve",
+    // 允许编译js文件
+    "allowJs": true,
     // 生成相应的 .map文件
     "sourceMap": true,
     // 忽略所有的声明文件（ *.d.ts）的类型检查
     "resolveJsonModule": true,
     "esModuleInterop": true,
+    // 启用实验性语法不报错
+    "experimentalDecorators": true,
     // 编译过程中需要引入的库文件的列表
     "lib": ["esnext", "dom"],
-    // 用来指定默认的类型声明文件查找路径
-    "typeRoots": ["./node_modules/@types/", "./types"],
     // 设置我们想要引入的types包
     "types": ["vite/client"],
+    // 用来指定默认的类型声明文件查找路径
+    "typeRoots": ["./node_modules/@types/", "./types"],
+    // 跳过库检查
+    "skipLibCheck": true,
     // 解析非相对模块名的基准目录
     "baseUrl": ".",
     // 模块名到基于 baseUrl的路径映射的列表
@@ -50,6 +57,8 @@
     "src/**/*.vue",
     "types/**/*.d.ts",
     "types/**/*.ts",
+    "build/**/*.ts",
+    "build/**/*.d.ts",
     "mock/**/*.ts",
     "vite.config.ts"
   ],

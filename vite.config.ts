@@ -1,7 +1,8 @@
 import type { UserConfig, ConfigEnv } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import viteSvgIcons from 'vite-plugin-svg-icons'
-import { viteMockServe } from 'vite-plugin-mock'
+import { loadEnv } from 'vite'
+import { wrapperEnv } from './build/utils'
+import { createVitePlugins } from './build/vite/plugin'
+
 import { resolve } from 'path'
 
 function pathResolve(dir: string) {
@@ -9,30 +10,17 @@ function pathResolve(dir: string) {
 }
 
 // https://vitejs.dev/config/
-export default ({ command }: ConfigEnv): UserConfig => {
-  // 是否开启mock
-  const devMock = true
+export default ({ command, mode }: ConfigEnv): UserConfig => {
+  const root = process.cwd()
+
+  const env = loadEnv(mode, root)
+
+  // The boolean type read by loadEnv is a string. This function can be converted to boolean type
+  const viteEnv = wrapperEnv(env)
+
+  const isBuild = command === 'build'
 
   return {
-    // 插件
-    plugins: [
-      vue(),
-      // 配置svgIcon
-      viteSvgIcons({
-        // Specify the icon folder to be cached
-        iconDirs: [pathResolve('src/assets/icons/svg')],
-        // Specify symbolId format
-        symbolId: 'icon-[dir]-[name]'
-      }),
-      // 配置mock
-      viteMockServe({
-        ignore: /^\_/,
-        mockPath: 'mock',
-        watchFiles: true,
-        localEnabled: command === 'serve' && devMock
-      })
-    ],
-    // 别名
     resolve: {
       alias: [
         {
@@ -45,7 +33,7 @@ export default ({ command }: ConfigEnv): UserConfig => {
         }
       ]
     },
-    // 开发
+
     server: {
       port: 9527,
       proxy: {
@@ -56,9 +44,10 @@ export default ({ command }: ConfigEnv): UserConfig => {
         }
       }
     },
-    // 生产
+
     build: {
       target: 'es2015',
+      outDir: 'dist',
       terserOptions: {
         compress: {
           keep_infinity: true,
@@ -66,10 +55,11 @@ export default ({ command }: ConfigEnv): UserConfig => {
           drop_debugger: true
         }
       },
+      // Turning off brotliSize display can slightly reduce packaging time
       brotliSize: false,
       chunkSizeWarningLimit: 1200
     },
-    // 全局增加样式
+
     css: {
       preprocessorOptions: {
         scss: {
@@ -79,6 +69,10 @@ export default ({ command }: ConfigEnv): UserConfig => {
 					`
         }
       }
-    }
+    },
+
+    // The vite is separately extracted and managed
+    plugins: createVitePlugins(viteEnv, isBuild)
+
   }
 }
