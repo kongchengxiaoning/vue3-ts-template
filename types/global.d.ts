@@ -17,6 +17,7 @@ declare global {
     VITE_ENV: string;
     VITE_LEGACY: boolean;
     VITE_USE_MOCK: boolean;
+    VITE_GLOB_APP_TITLE: string;
     VITE_BUILD_COMPRESS: 'gzip' | 'brotli' | 'none';
   }
 }

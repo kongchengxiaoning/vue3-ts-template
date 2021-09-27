@@ -5,6 +5,7 @@ import legacy from '@vitejs/plugin-legacy'
 import { configSvgIconsPlugin } from './svgSprite'
 import { configMockPlugin } from './mock'
 import { configCompressPlugin } from './compress'
+import { configHtmlPlugin } from './html'
 
 export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
   const {
@@ -26,6 +27,9 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
 
   // vite-plugin-mock
   VITE_USE_MOCK && vitePlugins.push(configMockPlugin(isBuild))
+
+  // vite-plugin-html
+  vitePlugins.push(configHtmlPlugin(viteEnv, isBuild))
 
   // The following plugins only work in the production environment
   if (isBuild) {
