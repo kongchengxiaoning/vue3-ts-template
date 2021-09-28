@@ -1,16 +1,16 @@
 import router from '@/router'
 import store from '@/store'
-import config from '@/assets/scripts/config'
 import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
 import { getToken } from '@/utils/auth'
+import { getAppEnvConfig } from '@/utils/env'
+
+const { VITE_GLOB_APP_TITLE } = getAppEnvConfig()
 
 // NProgress Configuration
 NProgress.configure({
   showSpinner: false
 })
-
-const { TITLE } = config
 
 router.beforeEach(async(to, from, next) => {
   // 开始进度条
@@ -62,6 +62,6 @@ router.afterEach(to => {
   // 路由发生变化
   const metaTitle = to.meta.title
   if (metaTitle) {
-    window.document.title = `${TITLE}-${metaTitle}`
+    window.document.title = `${VITE_GLOB_APP_TITLE}-${metaTitle}`
   }
 })

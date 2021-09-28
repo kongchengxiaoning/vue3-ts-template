@@ -13,11 +13,17 @@ declare global {
     readonly [key: string]: T;
   };
 
+  interface ImportMetaEnv extends ViteEnv {
+    __: unknown;
+  }
+
   declare interface ViteEnv {
     VITE_ENV: string;
     VITE_LEGACY: boolean;
     VITE_USE_MOCK: boolean;
     VITE_GLOB_APP_TITLE: string;
+    VITE_PUBLIC_PATH: string;
+    VITE_GLOB_API_URL: string;
     VITE_BUILD_COMPRESS: 'gzip' | 'brotli' | 'none';
   }
 }

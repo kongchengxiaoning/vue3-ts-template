@@ -19,9 +19,12 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
   // The boolean type read by loadEnv is a string. This function can be converted to boolean type
   const viteEnv = wrapperEnv(env)
 
+  const { VITE_PUBLIC_PATH } = viteEnv
+
   const isBuild = command === 'build'
 
   return {
+    base: VITE_PUBLIC_PATH,
     resolve: {
       alias: [
         {

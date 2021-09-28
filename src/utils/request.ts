@@ -1,11 +1,11 @@
 import axios, { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios'
 import { getToken, removeToken } from './auth'
+import { getAppEnvConfig } from './env'
 
-import config from '@/assets/scripts/config'
-const { BASE_URL } = config
+const { VITE_GLOB_API_URL } = getAppEnvConfig()
 
 const service = axios.create({
-  baseURL: process.env.NODE_ENV === 'production' ? BASE_URL.PRO : BASE_URL.DEV, // 测试环境用dev 生产环境用pro
+  baseURL: VITE_GLOB_API_URL, // 测试环境用dev 生产环境用pro
   withCredentials: true, // 跨域请求时发送cookies
   timeout: 12000 // 请求超时
 })

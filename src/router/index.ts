@@ -1,4 +1,8 @@
-import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
+import type { RouteRecordRaw } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
+import { getAppEnvConfig } from '@/utils/env'
+
+const { VITE_PUBLIC_PATH } = getAppEnvConfig()
 
 /* Layout */
 import Layout from '@/layout/index.vue'
@@ -27,9 +31,9 @@ const routes: Array<RouteRecordRaw> = [
 
 const router = createRouter({
   strict: true,
-  history: createWebHistory(),
+  history: createWebHistory(`${VITE_PUBLIC_PATH}`),
   scrollBehavior: () => ({ top: 0, left: 0 }),
-  routes
+  routes: routes as unknown as RouteRecordRaw[]
 })
 
 // 重置路由
