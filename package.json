@@ -6,6 +6,9 @@
     "dev": "vite",
     "build": "vue-tsc --noEmit && vite build",
     "serve": "vite preview",
+    "report": "cross-env REPORT=true npm run build",
+    "preview": "npm run build && vite preview",
+    "type:check": "vue-tsc --noEmit --skipLibCheck",
     "lint:eslint": "eslint --max-warnings 0  \"{src,mock}/**/*.{vue,ts,tsx}\" --fix"
   },
   "dependencies": {
@@ -28,8 +31,10 @@
     "@vitejs/plugin-vue": "^1.6.2",
     "@vitejs/plugin-vue-jsx": "^1.1.8",
     "@vue/compiler-sfc": "^3.2.12",
+    "cross-env": "^7.0.3",
     "eslint": "^7.32.0",
     "eslint-plugin-vue": "^7.18.0",
+    "rollup-plugin-visualizer": "^5.5.2",
     "sass": "^1.42.1",
     "sass-loader": "^12.1.0",
     "typescript": "^4.4.3",
