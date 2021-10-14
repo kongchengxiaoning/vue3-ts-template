@@ -1,18 +1,18 @@
 # Vite 2.x + Vue 3.x + Typescript 4.x
 
 ### PROD
-* [✓] [vue3](https://v3.vuejs.org/)
-* [✓] [Vuex](https://github.com/vuejs/vuex#readme)
-* [✓] [Vue-Router](https://next.router.vuejs.org/)
-* [✓] [Axios](https://github.com/axios/axios)
+* [x] [vue3](https://v3.vuejs.org/)
+* [x] [Vuex](https://github.com/vuejs/vuex#readme)
+* [x] [Vue-Router](https://next.router.vuejs.org/)
+* [x] [Axios](https://github.com/axios/axios)
 
 ### DEV
-* [✓] [vite](https://github.com/vitejs/vite)
-* [✓] [@vue/compiler-sfc](https://github.com/vuejs/rfcs/pull/227)
-* [✓] [TypeScript](https://github.com/microsoft/TypeScript/#readme)
-* [✓] [Sass](https://github.com/sass/sass)
-* [✓] [Mock](https://github.com/nuysoft/Mock)
-* [✓] [Eslint](https://eslint.org/)
+* [x] [vite](https://github.com/vitejs/vite)
+* [x] [@vue/compiler-sfc](https://github.com/vuejs/rfcs/pull/227)
+* [x] [TypeScript](https://github.com/microsoft/TypeScript/#readme)
+* [x] [Sass](https://github.com/sass/sass)
+* [x] [Mock](https://github.com/nuysoft/Mock)
+* [x] [Eslint](https://eslint.org/)
 
 ## Usage
 ### install dep

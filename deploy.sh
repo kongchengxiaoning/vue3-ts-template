@@ -1,25 +1,25 @@
 #！ /bin/bash
-
 echo "start update"
 
-# 切换到release分支
+# checkout branch
 git checkout release
 
-# 拉取git上develop分支最新代码
+# pull develop
 git reset --hard origin/develop
 
-# 打包
+# build
 echo "start build"
 yarn build
 
-# 部署
+# commit
 echo "start commit"
 git add .
 git commit -m "feat: update-"$(date +%Y/%m/%d-%H:%M:%S)
 
+# push
 echo "start push"
 git push -f origin release
 
-# 切换回develop分支
+# checkout branch
 echo "end update"
 git checkout develop

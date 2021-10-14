@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@types/js-cookie": "^2.2.7",
+    "@types/mockjs": "^1.0.4",
     "@types/node": "^16.9.6",
     "@types/nprogress": "^0.2.0",
     "@typescript-eslint/eslint-plugin": "^4.31.2",
