@@ -1,26 +1,22 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    // 符合规范的类字段 开启：Define 关闭：Set
-    "useDefineForClassFields": true,
     // 指定生成哪个模块系统代码
     "module": "esnext",
+    // 符合规范的类字段 开启：Define 关闭：Set
+    "useDefineForClassFields": true,
     // 决定如何处理模块
     "moduleResolution": "node",
     // 所有严格检查的总开关
     "strict": true,
     // 是否移除注释 默认: false
     "removeComments": true,
-    // 不生成编译a后的文件
+    // 不生成编译后的文件
     "noEmit": false,
     // 当有错误时不编译 默认: false
     "noEmitOnError": true,
-    // 是否开启严格模式 默认: false
-    "alwaysStrict": true,
     // 不允许默认使用any类型 默认: false
     "noImplicitAny": false,
-    // 不允许使用不明确的this 默认: false
-    "noImplicitThis": false,
     // 严格检查空值
     "strictNullChecks": false,
     // jsx
