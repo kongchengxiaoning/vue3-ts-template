@@ -1,6 +1,6 @@
 import axios, { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios'
-import { getToken, removeToken } from './auth'
-import { getAppEnvConfig } from './env'
+import { getToken, removeToken } from '@/utils/auth'
+import { getAppEnvConfig } from '@/utils/env'
 
 const { VITE_GLOB_API_URL } = getAppEnvConfig()
 

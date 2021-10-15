@@ -30,7 +30,6 @@ const actions = {
       })
     })
   },
-  // get user info
   getInfo({ commit, state }) {
     return new Promise((resolve: any, reject: any) => {
       getUserInfo({ token: state.token }).then(res => {
@@ -42,7 +41,6 @@ const actions = {
       })
     })
   },
-  // user logout
   logout({ commit }) {
     return new Promise((resolve: any, reject: any) => {
       setLogout().then(() => {
@@ -55,7 +53,6 @@ const actions = {
       })
     })
   },
-  // remove token
   resetToken({ commit }) {
     return new Promise((resolve: any) => {
       commit('SET_TOKEN', '')

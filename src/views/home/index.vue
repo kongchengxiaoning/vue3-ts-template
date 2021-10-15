@@ -6,9 +6,9 @@
 </template>
 
 <script setup lang="ts">
-import HelloWorld from '@/components/HelloWorld.vue'
+import HelloWorld from '@/components/HelloWorld/index.vue'
 
-import useMousePosition from '@/hooks/useMousePosition'
+import useMousePosition from '@/hooks/event/useMousePosition'
 
 import { computed } from 'vue'
 import { useStore } from 'vuex'

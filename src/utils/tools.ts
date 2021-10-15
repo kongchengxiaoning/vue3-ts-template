@@ -1,4 +1,15 @@
 /**
+ * @returns {String} 判断设备类型
+ */
+export const device = () => {
+  const u = navigator.userAgent
+  const isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1
+  const isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)
+  if (isAndroid) { return 'android' }
+  if (isiOS) { return 'ios' }
+}
+
+/**
  * @returns {String} 当前浏览器名称
  */
 export const getExplorer = () => {
@@ -44,7 +55,6 @@ export const formatMoney = (money = '0.00', digit = 2) => {
   while (re.test(tpMoney)) {
     tpMoney = tpMoney.replace(re, '$1,$2$3')
   }
-
   return tpMoney
 }
 
@@ -128,57 +138,6 @@ export const getParams = url => {
     paramObj[keyValue[0]] = decodeURIComponent(keyValue[1])
   })
   return paramObj
-}
-
-/**
- * @returns {Boolean} 验证是否为手机号码
- */
-export const isMobile = (v = '') => {
-  const r = /^1[3456789]\d{9}$/
-  return !v ? false : r.test(v)
-}
-
-/**
- * @returns {Boolean} 验证身份证的有效性
- */
-export const isCardID = (v = '') => {
-  const r = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/
-  return !v ? false : r.test(v)
-}
-
-/**
- * @returns {Boolean} 验证邮箱格式
- */
-export const isEmail = (v = '') => {
-  const r = /^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/
-  return !v ? false : r.test(v)
-}
-
-/**
- * @returns {Boolean} 验证是否为汉字
- */
-export const idChinese = (v = '') => {
-  const r = /^\s*$/g
-  return !v ? false : r.test(v)
-}
-
-/**
- * @returns {Boolean} 验证是否为车牌号
- */
-export const isPlateNumber = (v = '') => {
-  const r = /^[京津沪渝冀豫云辽黑湘皖鲁新苏浙赣鄂桂甘晋蒙陕吉闽贵粤青藏川宁琼使领A-Z]{1}[A-Z]{1}[A-Z0-9]{4}[A-Z0-9挂学警港澳]{1}$/
-  return !v ? false : r.test(v)
-}
-
-/**
- * @returns {String} 判断设备类型
- */
-export const device = () => {
-  const u = navigator.userAgent
-  const isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1 // android终端
-  const isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/) // ios终端
-  if (isAndroid) { return 'android' }
-  if (isiOS) { return 'ios' }
 }
 
 /**

@@ -36,7 +36,7 @@ const router = createRouter({
   routes: routes as unknown as RouteRecordRaw[]
 })
 
-// 重置路由
+/* resetRouter */
 export function resetRouter() {
   router.getRoutes().forEach((route) => {
     const { name } = route
