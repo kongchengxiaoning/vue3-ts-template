@@ -1,16 +1,15 @@
-import axios, { AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios'
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios'
 import { getToken, removeToken } from '@/utils/auth'
 import { getAppEnvConfig } from '@/utils/env'
 
 const { VITE_GLOB_API_URL } = getAppEnvConfig()
 
-const service = axios.create({
-  baseURL: VITE_GLOB_API_URL, // 测试环境用dev 生产环境用pro
-  withCredentials: true, // 跨域请求时发送cookies
-  timeout: 12000 // 请求超时
+const service: AxiosInstance = axios.create({
+  baseURL: VITE_GLOB_API_URL,
+  withCredentials: true,
+  timeout: 12000
 })
 
-// 请求拦截器
 service.interceptors.request.use(
   (request: AxiosRequestConfig) => {
     request.headers['Content-Type'] = 'application/json;charset=UTF-8' // 'application/x-www-form-urlencoded'
@@ -25,11 +24,10 @@ service.interceptors.request.use(
   }
 )
 
-// 响应拦截器
 service.interceptors.response.use(
   (response: AxiosResponse) => {
     const res = response.data
-    // 错误处理
+    // Error
     if (res.code !== '0000') {
       if (res.code === '9999') {
         removeToken()

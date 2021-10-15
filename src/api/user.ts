@@ -2,10 +2,8 @@ import request from '@/utils/axios/request'
 
 /**
  * @description 获取登录信息
- * @parme {String} phone 手机号
- * @parme {String} password 密码
  */
-export const setLogin = data => {
+export const setLogin = (data: { userName: string, password: string }) => {
   return request({
     url: '/api/login',
     method: 'POST',
@@ -16,7 +14,7 @@ export const setLogin = data => {
 /**
  * @description 获取用户信息
  */
-export const getUserInfo = data => {
+export const getUserInfo = (data) => {
   return request({
     url: '/api/user_info',
     method: 'POST',
