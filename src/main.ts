@@ -1,24 +1,24 @@
-import { createApp } from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
-import svgIcon from '@/assets/icons/index'
-import directives from './directives'
-import './permission'
 import '@/assets/styles/index.scss'
+import './permission'
+import App from './App.vue'
+import { createApp } from 'vue'
+import { router } from './router'
+import { store } from './store'
+import { globSvgIcon } from '@/assets/icons/index'
+import { globDirectives } from './directives'
 
 const app = createApp(App)
-
-// Register global directive
-directives(app)
-
-// Register icon sprite
-svgIcon(app)
 
 // Configure routing
 app.use(router)
 
 // Configure store
 app.use(store)
+
+// Register icon sprite
+globSvgIcon(app)
+
+// Register global directive
+globDirectives(app)
 
 app.mount('#app')

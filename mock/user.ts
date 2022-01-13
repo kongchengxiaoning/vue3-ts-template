@@ -30,8 +30,8 @@ export default [
     url: '/api/login',
     method: 'post',
     response: (config) => {
-      const { userName } = config.body
-      const token = tokens[userName]
+      const { username } = config.body
+      const token = tokens[username]
 
       if (!token) {
         return {

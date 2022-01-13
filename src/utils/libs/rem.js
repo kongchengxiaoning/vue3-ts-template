@@ -1,4 +1,3 @@
-// 转换率(设计图宽度 / 10)
 (function flexible(window, document) {
   var docEl = document.documentElement
   var dpr = window.devicePixelRatio || 1

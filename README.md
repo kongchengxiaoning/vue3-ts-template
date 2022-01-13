@@ -1,8 +1,8 @@
 # Vite 2.x + Vue 3.x + Typescript 4.x
 
 ### PROD
-* [x] [vue3](https://v3.vuejs.org/)
-* [x] [Vuex](https://github.com/vuejs/vuex#readme)
+* [x] [vue3](https://v3.vuejs.org)
+* [x] [pinia](https://pinia.vuejs.org)
 * [x] [Vue-Router](https://next.router.vuejs.org/)
 * [x] [Axios](https://github.com/axios/axios)
 

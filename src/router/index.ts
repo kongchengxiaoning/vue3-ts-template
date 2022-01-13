@@ -21,7 +21,7 @@ const routes: Array<RouteRecordRaw> = [
       {
         path: 'home',
         name: 'Home',
-        component: () => import(/* webpackChunkName: "home" */ '@/views/home/index.vue'),
+        component: () => import('@/views/home/index.vue'),
         meta: { title: '首页' }
       }
     ]
@@ -46,4 +46,4 @@ export function resetRouter() {
   })
 }
 
-export default router
+export { router }

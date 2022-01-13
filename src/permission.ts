@@ -1,9 +1,9 @@
-import router from '@/router'
-import store from '@/store'
-import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'
+import NProgress from 'nprogress'
+import { router } from '@/router'
 import { getToken } from '@/utils/auth'
 import { getAppEnvConfig } from '@/utils/env'
+import { useUserStoreWithOut } from '@/store/modules/user'
 
 const { VITE_GLOB_APP_TITLE } = getAppEnvConfig()
 
@@ -15,8 +15,10 @@ NProgress.configure({
 router.beforeEach(async(to, from, next) => {
   // 开始进度条
   NProgress.start()
-  // 获取Token
+
   const hasToken = getToken()
+  const userStore = useUserStoreWithOut()
+
   // 登录未过期或打开页面不需要登录
   if (hasToken) {
     if (to.path === '/login') {
@@ -24,23 +26,25 @@ router.beforeEach(async(to, from, next) => {
       NProgress.done()
     } else {
       // 判断有无用户信息
-      if (store.getters.userInfo) {
+      if (userStore.userInfo) {
         next()
       } else {
         try {
           // 获取用户信息
-          await store.dispatch('user/getInfo')
+          const { roles } = await userStore.getInfo()
+          console.log(roles)
 
           // 基于角色生成路由
-          // const accessRoutes = await store.dispatch('permission/generateRoutes', roles)
+          // const routes = await generateRoutes(roles)
 
           // 动态添加可访问路由
-          // router.addRoute()
+          // routes.forEach((route) => {
+          //   router.addRoute(route)
+          // })
 
           next({ ...to, replace: true })
         } catch (error) {
-          await store.dispatch('user/resetToken')
-          console.log(error || 'Has Error')
+          await userStore.logout()
           next(`/login?redirect=${to.path}`)
           NProgress.done()
         }

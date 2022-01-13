@@ -18,10 +18,9 @@
     "js-cookie": "^3.0.1",
     "mockjs": "^1.1.0",
     "nprogress": "^0.2.0",
+    "pinia": "^2.0.9",
     "vue": "^3.2.12",
-    "vue-router": "^4.0.11",
-    "vuex": "^4.0.2",
-    "vuex-persistedstate": "^4.1.0"
+    "vue-router": "^4.0.11"
   },
   "devDependencies": {
     "@types/jest": "^27.0.2",

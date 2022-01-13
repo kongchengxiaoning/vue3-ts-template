@@ -4,7 +4,9 @@ import type {
 } from 'vue'
 
 declare global {
-  // vue
+  declare type Nullable<T> = T | null;
+  declare type NonNullable<T> = T extends null | undefined ? never : T;
+
   declare type PropType<T> = VuePropType<T>;
   declare type VueNode = VNodeChild | JSX.Element;
 
