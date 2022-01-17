@@ -1,6 +1,6 @@
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 
-export default function() {
+export default function () {
   const x = ref<number>(-1)
   const y = ref<number>(-1)
 

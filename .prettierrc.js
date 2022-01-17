@@ -5,8 +5,6 @@ module.exports = {
   bracketSameLine: false,
   // 对象文字中括号之间的空格 false: 不加空格 | *true: 加空格
   bracketSpacing: true,
-  // 嵌入式语言格式 "auto" "off"
-  embeddedLanguageFormatting: 'auto', 
   // 格式化HTML对空格的灵敏度 *"css" | "strict" | "ignore"
   htmlWhitespaceSensitivity: 'css',
   // 文件顶部插入@format标记
@@ -32,5 +30,7 @@ module.exports = {
   // 用制表符而不是空格缩进行
   useTabs: false,
   // 是否缩进Vue文件中的代码 *false | true
-  vueIndentScriptAndStyle: false
+  vueIndentScriptAndStyle: false,
+  // // 结尾是 \n \r \n\r auto
+  endOfLine: 'auto'
 }

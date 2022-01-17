@@ -1,3 +1,3 @@
-test('if jest is normal.', async() => {
+test('if jest is normal.', async () => {
   expect('jest').toEqual('jest')
 })

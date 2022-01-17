@@ -12,7 +12,7 @@ NProgress.configure({
   showSpinner: false
 })
 
-router.beforeEach(async(to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   // 开始进度条
   NProgress.start()
 
@@ -60,7 +60,7 @@ router.beforeEach(async(to, from, next) => {
   }
 })
 
-router.afterEach(to => {
+router.afterEach((to) => {
   // 结束进度条
   NProgress.done()
   // 路由发生变化

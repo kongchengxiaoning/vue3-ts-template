@@ -1,4 +1,4 @@
-export const globDirectives = app => {
+export const globDirectives = (app) => {
   /**
    * 防抖 单位时间只触发最后一次
    * @param {?Number|300} time - 间隔时间

@@ -5,8 +5,12 @@ export const device = () => {
   const u = navigator.userAgent
   const isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1
   const isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/)
-  if (isAndroid) { return 'android' }
-  if (isiOS) { return 'ios' }
+  if (isAndroid) {
+    return 'android'
+  }
+  if (isiOS) {
+    return 'ios'
+  }
 }
 
 /**
@@ -36,7 +40,9 @@ export const numberParse = (str) => {
  * @returns {String} 商品金钱处理
  */
 export const cashArr = (cash = '') => {
-  if (!cash) { return ['-', '--'] }
+  if (!cash) {
+    return ['-', '--']
+  }
   const cashAr = parseFloat(cash).toFixed(2).split('.')
   cashAr[0] = cashAr[0] + '.'
   return cashAr
@@ -47,9 +53,13 @@ export const cashArr = (cash = '') => {
  */
 export const formatMoney = (money = '0.00', digit = 2) => {
   let tpMoney
-  if (undefined !== money) { tpMoney = money }
+  if (undefined !== money) {
+    tpMoney = money
+  }
   tpMoney = Number(tpMoney)
-  if (isNaN(tpMoney)) { return '0.00' }
+  if (isNaN(tpMoney)) {
+    return '0.00'
+  }
   tpMoney = tpMoney.toFixed(digit) + ''
   const re = /^(-?\d+)(\d{3})(\.?\d*)/
   while (re.test(tpMoney)) {
@@ -61,7 +71,7 @@ export const formatMoney = (money = '0.00', digit = 2) => {
 /**
  * @returns {String} 卡号加***
  */
-export const bindCardNo = value => {
+export const bindCardNo = (value) => {
   if (value) {
     const arr1 = value.substr(value.length - 4)
     const arr2 = value.substr(0, 4)
@@ -75,9 +85,27 @@ export const bindCardNo = value => {
 export const capital = (str = '') => {
   str = str + ''
   const len = str.length - 1
-  const idxs = ['', '十', '百', '千', '万', '十', '百', '千', '亿', '十', '百', '千', '万', '十', '百', '千', '亿']
+  const idxs = [
+    '',
+    '十',
+    '百',
+    '千',
+    '万',
+    '十',
+    '百',
+    '千',
+    '亿',
+    '十',
+    '百',
+    '千',
+    '万',
+    '十',
+    '百',
+    '千',
+    '亿'
+  ]
   const num = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九']
-  return str.replace(/([1-9]|0+)/g, function($, $1, idx) {
+  return str.replace(/([1-9]|0+)/g, function ($, $1, idx) {
     let pos = 0
     if ($1[0] !== '0') {
       pos = len - idx
@@ -89,7 +117,7 @@ export const capital = (str = '') => {
       const left = len - idx
       const right = len - idx + $1.length
       if (Math.floor(right / 4) - Math.floor(left / 4) > 0) {
-        pos = left - left % 4
+        pos = left - (left % 4)
       }
       if (pos) {
         return idxs[pos] + num[$1[0]]
@@ -121,19 +149,20 @@ export const getDateTime = () => {
   const h = dt.getHours()
   const m = dt.getMinutes()
   const s = dt.getSeconds()
-  const currentdate = year + '/' + month + '/' + day + ' ' + h + '/' + m + '/' + s
+  const currentdate =
+    year + '/' + month + '/' + day + ' ' + h + '/' + m + '/' + s
   return currentdate
 }
 
 /**
  * @returns {Object} 获取链接中包含的参数
  */
-export const getParams = url => {
+export const getParams = (url) => {
   const paramObj = {}
   const params = url.split('?')[1]
   if (!params) return paramObj
   const keyValueArr = params.split('&')
-  keyValueArr.forEach(item => {
+  keyValueArr.forEach((item) => {
     const keyValue = item.split('=')
     paramObj[keyValue[0]] = decodeURIComponent(keyValue[1])
   })

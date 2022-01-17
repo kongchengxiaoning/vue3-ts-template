@@ -3,7 +3,7 @@ import request from '@/utils/axios/request'
 /**
  * @description 获取登录信息
  */
-export const setLogin = (data: { username: string, password: string }) => {
+export const setLogin = (data: { username: string; password: string }) => {
   return request({
     url: '/api/login',
     method: 'POST',

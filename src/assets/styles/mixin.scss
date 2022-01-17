@@ -1,9 +1,9 @@
 /* 设置背景图 */
-@mixin bg($url,$suffix: 'png', $size: 100% 100%, $positon: center) {
+@mixin bg($url, $suffix: 'png', $size: 100% 100%, $positon: center) {
   background-position: $positon;
   background-size: $size;
   background-repeat: no-repeat;
-  background-image: url('/static' + $url + "." + $suffix);
+  background-image: url('/static' + $url + '.' + $suffix);
 }
 
 /**
@@ -30,7 +30,7 @@
 @mixin clearfix() {
   &:before,
   &:after {
-    content: "";
+    content: '';
     display: table;
   }
   &:after {
@@ -62,7 +62,7 @@
 @mixin extend-click() {
   position: relative;
   &:before {
-    content: "";
+    content: '';
     position: absolute;
     top: -10px;
     left: -10px;
@@ -71,7 +71,7 @@
   }
 }
 
-/* 内容中心图片样式 */ 
+/* 内容中心图片样式 */
 @mixin extentd-content-img() {
   width: 200px;
   height: 140px;

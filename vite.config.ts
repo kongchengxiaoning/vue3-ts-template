@@ -39,6 +39,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
     },
 
     server: {
+      host: true,
       port: 9527,
       proxy: {
         '/api': {
@@ -77,6 +78,5 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
 
     // The vite is separately extracted and managed
     plugins: createVitePlugins(viteEnv, isBuild)
-
   }
 }

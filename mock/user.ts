@@ -50,7 +50,7 @@ export default [
   {
     url: '/api/user_info',
     method: 'post',
-    response: config => {
+    response: (config) => {
       const { token } = config.body
       const info = users[token]
 

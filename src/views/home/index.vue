@@ -1,5 +1,5 @@
 <template>
-  <img src="@/assets/images/logo.png" alt="Vue logo">
+  <img src="@/assets/images/logo.png" alt="Vue logo" />
   <hello-world msg="Hello Vue 3 + TypeScript + Vite" />
   <div>x: {{ x }} - y: {{ y }}</div>
   <div>name: {{ getUserInfo.name }}</div>
@@ -15,7 +15,7 @@ import { computed } from 'vue'
 const userStore = useUserStoreWithOut()
 const getUserInfo = computed(() => userStore.getUserInfo)
 
-const getLogin = async() => {
+const getLogin = async () => {
   await userStore.login({ username: 'admin', password: '123456' })
 }
 getLogin()
@@ -23,5 +23,4 @@ getLogin()
 const { x, y } = useMousePosition()
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

@@ -1,6 +1,5 @@
 <template>
-  <div v-if="isExternal" :style="styleExternalIcon" class="svg-external-icon svg-icon" />
-  <svg v-else :class="svgClass" aria-hidden="true">
+  <svg :class="svgClass" aria-hidden="true">
     <use :xlink:href="iconName" />
   </svg>
 </template>
@@ -18,27 +17,16 @@ export default defineComponent({
     className: {
       type: String,
       default: ''
-    },
-    color: {
-      type: String,
-      default: '#333'
     }
   },
   setup(props) {
     return {
-      isExternal: computed(() => /^(https?:|mailto:|tel:)/.test(props.iconClass)),
       iconName: computed(() => `#icon-${props.iconClass}`),
       svgClass: computed(() => {
         if (props.className) {
           return `svg-icon ${props.className}`
         } else {
           return `svg-icon`
-        }
-      }),
-      styleExternalIcon: computed(() => {
-        return {
-          mask: `url(${props.iconClass}) no-repeat 50% 50%`,
-          '-webkit-mask': `url(${props.iconClass}) no-repeat 50% 50%`
         }
       })
     }
@@ -53,11 +41,5 @@ export default defineComponent({
   fill: currentColor;
   vertical-align: -0.15em;
   overflow: hidden;
-}
-
-.svg-external-icon {
-  background-color: currentColor;
-  mask-size: cover !important;
-  display: inline-block;
 }
 </style>

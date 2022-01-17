@@ -33,7 +33,6 @@ export function copyTextToClipboard(
   element.value = input
 
   element.setAttribute('readonly', '')
-
   ;(element.style as any).contain = 'strict'
   element.style.position = 'absolute'
   element.style.left = '-9999px'
@@ -66,7 +65,7 @@ export function copyTextToClipboard(
   }
 
   if (previouslyFocusedElement) {
-    (previouslyFocusedElement as HTMLElement).focus()
+    ;(previouslyFocusedElement as HTMLElement).focus()
   }
   return isSuccess
 }

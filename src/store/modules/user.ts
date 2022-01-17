@@ -6,8 +6,8 @@ import { setLogin, doLogout, getUserInfo } from '@/api/user'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 
 interface UserState {
-  token?: string;
-  userInfo: Nullable<UserInfo>;
+  token?: string
+  userInfo: Nullable<UserInfo>
 }
 
 export const useUserStore = defineStore({
@@ -17,7 +17,7 @@ export const useUserStore = defineStore({
     userInfo: null
   }),
   getters: {
-    getUserInfo(): unknown {
+    getUserInfo(): any {
       return this.userInfo || {}
     },
     getToken(): string {
@@ -41,7 +41,7 @@ export const useUserStore = defineStore({
     /**
      * @description: login
      */
-    async login(params: { username: string; password: string; }) {
+    async login(params: { username: string; password: string }) {
       try {
         const { username, password } = params
         const { data } = await setLogin({ username, password })
@@ -51,7 +51,7 @@ export const useUserStore = defineStore({
         return Promise.reject(error)
       }
     },
-    async getInfo():Promise<UserInfo | null> {
+    async getInfo(): Promise<UserInfo | null> {
       try {
         const { data } = await getUserInfo({ token: this.getToken })
         this.setUserInfo(data)
