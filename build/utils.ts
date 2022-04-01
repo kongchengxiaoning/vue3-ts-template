@@ -6,6 +6,11 @@ export function isProdFn(mode: string): boolean {
   return mode === 'production'
 }
 
+// Whether to generate package preview
+export function isReportMode(): boolean {
+  return process.env.REPORT === 'true'
+}
+
 // Read all environment variable configuration files to process.env
 export function wrapperEnv(envConf: Recordable): ViteEnv {
   const ret: any = {}

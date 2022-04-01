@@ -1,7 +1,8 @@
-import type { Plugin } from 'vite'
+import type { PluginOption } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
 import legacy from '@vitejs/plugin-legacy'
+import vueSetupExtend from 'vite-plugin-vue-setup-extend'
 import { configSvgIconsPlugin } from './svgSprite'
 import { configMockPlugin } from './mock'
 import { configCompressPlugin } from './compress'
@@ -9,15 +10,15 @@ import { configHtmlPlugin } from './html'
 import { configVisualizerConfig } from './visualizer'
 
 export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
-  const {
-    VITE_LEGACY,
-    VITE_USE_MOCK,
-    VITE_BUILD_COMPRESS
-  } = viteEnv
+  const { VITE_LEGACY, VITE_USE_MOCK, VITE_BUILD_COMPRESS } = viteEnv
 
-  const vitePlugins: (Plugin | Plugin[])[] = [
+  const vitePlugins: (PluginOption | PluginOption[])[] = [
+    // have to
     vue(),
-    vueJsx()
+    // have to
+    vueJsx(),
+    // support name
+    vueSetupExtend()
   ]
 
   // @vitejs/plugin-legacy
@@ -38,9 +39,7 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean) {
   // The following plugins only work in the production environment
   if (isBuild) {
     // vite-plugin-compression
-    vitePlugins.push(
-      configCompressPlugin(VITE_BUILD_COMPRESS)
-    )
+    vitePlugins.push(configCompressPlugin(VITE_BUILD_COMPRESS))
   }
 
   return vitePlugins

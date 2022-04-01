@@ -12,9 +12,9 @@ module.exports = {
   // JSX中使用单引号而不是双引号 默认: false
   jsxSingleQuote: false,
   // 一行最多80个字符折行 默认: 80
-  printWidth: 80,
+  printWidth: 100,
   // 将按原样包装标记文本 "always"-超过宽度包装 | "never"- 不包装 | *"preserve" - 原样包装
-  proseWrap: 'preserve',
+  proseWrap: 'never',
   // 对象中的属性 *"as-needed" | "consistent" | "preserve"
   quoteProps: 'as-needed',
   // 仅限于格式化文件顶部包含特殊注释的文件
