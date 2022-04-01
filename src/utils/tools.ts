@@ -149,8 +149,7 @@ export const getDateTime = () => {
   const h = dt.getHours()
   const m = dt.getMinutes()
   const s = dt.getSeconds()
-  const currentdate =
-    year + '/' + month + '/' + day + ' ' + h + '/' + m + '/' + s
+  const currentdate = year + '/' + month + '/' + day + ' ' + h + '/' + m + '/' + s
   return currentdate
 }
 
