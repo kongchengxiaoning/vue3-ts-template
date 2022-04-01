@@ -53,16 +53,18 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
     build: {
       target: 'es2015',
       outDir: 'dist',
-      terserOptions: {
-        compress: {
-          keep_infinity: true,
-          drop_console: true,
-          drop_debugger: true
-        }
-      },
+      // Uncomment when minify="minify:'terser'"
+      // minify: 'terser',
+      // terserOptions: {
+      //   compress: {
+      //     keep_infinity: true,
+      //     drop_console: true,
+      //     drop_debugger: true
+      //   }
+      // },
       // Turning off brotliSize display can slightly reduce packaging time
       brotliSize: false,
-      chunkSizeWarningLimit: 1200
+      chunkSizeWarningLimit: 2000
     },
 
     css: {
