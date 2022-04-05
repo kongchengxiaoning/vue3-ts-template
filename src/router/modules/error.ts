@@ -1,6 +1,6 @@
 const ERROR_ROUTES = [
   {
-    path: '/:catchAll(.*)',
+    path: '/:pathMatch(.*)*',
     name: 'Error404',
     component: () => import('@/views/error-page/404.vue'),
     hidden: true,
