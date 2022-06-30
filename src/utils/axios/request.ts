@@ -48,4 +48,13 @@ service.interceptors.response.use(
   }
 )
 
+export const request = async (options: AxiosRequestConfig): Promise<any> => {
+  try {
+    const data = await service(options)
+    return data
+  } catch (error) {
+    return Promise.reject(error)
+  }
+}
+
 export default service
